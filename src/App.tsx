@@ -12,7 +12,7 @@ function App() {
   }, []);
 
   return (
-  <canvas ref={canvasRef}></canvas>
+  <canvas ref={canvasRef} className={"three"}></canvas>
 )
 }
 
