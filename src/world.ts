@@ -1,6 +1,7 @@
 import * as THREE from "three";
 import {OrbitControls} from "three/examples/jsm/controls/OrbitControls";
 import {BufferGeometry} from "three";
+import * as dat from 'dat.gui';
 
 export class World {
     private renderer: THREE.WebGLRenderer
@@ -10,8 +11,10 @@ export class World {
     private width: number;
     private height: number;
     private scale: number;
+    private gui: dat.GUI;
 
     constructor(private canvas?: HTMLCanvasElement) {
+        this.gui = new dat.GUI();
         this.scale = 3;
         this.height = window.innerHeight
         this.width = window.innerWidth;
@@ -73,7 +76,8 @@ export class World {
     }
 
     close = () => {
-        console.log("closed")
+        console.log("closed");
+        this.gui.destroy();
     }
 
     private addObjects = () => {
@@ -82,6 +86,10 @@ export class World {
         const material = new THREE.MeshStandardMaterial({color: '#806dde'})
         const mesh = new THREE.Mesh(sphere, material);
         mesh.position.y = -1;
+        const sphere1Gui = this.gui.addFolder("Sphere 1");
+        sphere1Gui.add(mesh.position, 'x').min(-2).max(2).step(0.01)
+        sphere1Gui.add(mesh.position, 'y').min(-2).max(2).step(0.01)
+        sphere1Gui.add(mesh.position, 'z').min(-2).max(2).step(0.01)
         this.scene.add(mesh)
 
         const sphere2 = new THREE.SphereGeometry(0.5);

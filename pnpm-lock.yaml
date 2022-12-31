@@ -1,10 +1,12 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@types/dat.gui': ^0.7.7
   '@types/react': ^18.0.26
   '@types/react-dom': ^18.0.9
   '@types/three': ^0.147.0
   '@vitejs/plugin-react': ^3.0.0
+  dat.gui: ^0.7.9
   react: ^18.2.0
   react-dom: ^18.2.0
   three: ^0.148.0
@@ -12,11 +14,13 @@ specifiers:
   vite: ^4.0.0
 
 dependencies:
+  dat.gui: 0.7.9
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   three: 0.148.0
 
 devDependencies:
+  '@types/dat.gui': 0.7.7
   '@types/react': 18.0.26
   '@types/react-dom': 18.0.10
   '@types/three': 0.147.0
@@ -489,6 +493,10 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
 
+  /@types/dat.gui/0.7.7:
+    resolution: {integrity: sha512-CxLCme0He5Jk3uQwfO/fGZMyNhb/ypANzqX0yU9lviBQMlen5SOvQTBQ/Cd9x5mFlUAK5Tk8RgvTyLj1nYkz+w==}
+    dev: true
+
   /@types/prop-types/15.7.5:
     resolution: {integrity: sha512-JCB8C6SnDoQf0cNycqd/35A7MjcnK+ZTqE7judS6o7utxUCg6imJg3QK2qzHKszlTjcj2cn+NwMB2i96ubpj7w==}
     dev: true
@@ -585,6 +593,10 @@ packages:
   /csstype/3.1.1:
     resolution: {integrity: sha512-DJR/VvkAvSZW9bTouZue2sSxDwdTN92uHjqeKVm+0dAqdfNykRzQ95tay8aXMBAAPpUiq4Qcug2L7neoRh2Egw==}
     dev: true
+
+  /dat.gui/0.7.9:
+    resolution: {integrity: sha512-sCNc1OHobc+Erc1HqiswYgHdVNpSJUlk/Hz8vzOCsER7rl+oF/4+v8GXFUyCgtXpoCX6+bnmg07DedLvBLwYKQ==}
+    dev: false
 
   /debug/4.3.4:
     resolution: {integrity: sha512-PRWFHuSU3eDtQJPvnNY7Jcket1j0t5OuOsFzPPzsekD52Zl8qUfFIPEiswXqIvHWGVHOgX+7G/vCNNhehwxfkQ==}
