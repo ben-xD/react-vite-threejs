@@ -1,6 +1,7 @@
 import * as THREE from "three";
 import {OrbitControls} from "three/examples/jsm/controls/OrbitControls";
 import {BufferGeometry} from "three";
+import * as Stats from 'stats.js';
 import * as dat from 'dat.gui';
 
 export class World {
@@ -12,9 +13,12 @@ export class World {
     private height: number;
     private scale: number;
     private gui: dat.GUI;
+    private stats: Stats;
 
-    constructor(private canvas?: HTMLCanvasElement) {
+    constructor(body: HTMLElement, private canvas?: HTMLCanvasElement) {
         this.gui = new dat.GUI();
+        this.stats = this.createStats(body);
+
         this.scale = 3;
         this.height = window.innerHeight
         this.width = window.innerWidth;
@@ -40,6 +44,12 @@ export class World {
         this.addOrbitControls();
         this.tick();
     }
+    createStats(body: HTMLElement): Stats {
+        const stats = new Stats();
+        stats.showPanel(0); // 0: fps, 1: ms, 2: mb, 3+: custom
+        body.appendChild(stats.dom);
+        return stats;
+    }
 
     private createCamera = (): THREE.PerspectiveCamera => {
         const camera = new THREE.PerspectiveCamera(75, this.width / this.height);
@@ -64,15 +74,18 @@ export class World {
     }
 
     tick = () => {
+        this.stats.begin();
         this.renderer.render(this.scene, this.camera);
-        requestAnimationFrame(this.tick);
-
+        
         // Using THREE.Clock for animation
         // mesh.rotation.y += 1 * clock.getDelta();
         // // Can't use delta time here because the value is always close to 0,
         // // and therefore the position will be set to 0 all the time.
         // mesh.position.y = Math.sin(clock.getElapsedTime());
         // // camera.lookAt(mesh.position);
+        
+        this.stats.end();
+        requestAnimationFrame(this.tick);
     }
 
     close = () => {

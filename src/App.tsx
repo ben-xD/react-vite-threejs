@@ -5,7 +5,7 @@ function App() {
   const canvasRef = useRef(null);
 
   useEffect(() => {
-      const world = new World(canvasRef.current!);
+      const world = new World(document.body, canvasRef.current!);
       return () => {
           world.close();
       }
